@@ -2,7 +2,7 @@
 
 **Türkçe karakter destekli, kaotik ve zorlayıcı bir typing oyunu**
 
-Canlı oynayın → https://kullanıcıadın.github.io/klavye-sovalyesi/
+Canlı oynayın → [https://kullanıcıadın.github.io/klavye-sovalyesi/](https://galipefeoncu.github.io/chaos-typing/)
 
 ### Önemli Uyarı
 **Oyun, güncel internet kültürü, mizah ve sosyal medya jargonunu yansıtan kelimeler içerir.**  
