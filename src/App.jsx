@@ -435,7 +435,7 @@ export default function App() {
 
           if (livesRef.current <= 0) {
             gameOver();
-            return;
+            break; // Oyun döngüsünün tamamiyle kırılmaması için return yerine break atıyoruz, böylece rAF loopu hayatta kalır.
           }
         }
       }
