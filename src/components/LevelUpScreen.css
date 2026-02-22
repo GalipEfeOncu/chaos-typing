@@ -1,0 +1,107 @@
+.levelup-screen {
+    display: flex !important;
+    background: rgba(20, 0, 20, 0.95) !important;
+}
+
+.levelup-title {
+    font-size: 1.8rem;
+    color: #facc15;
+    margin-bottom: 8px;
+}
+
+.levelup-subtitle {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    margin-bottom: 24px;
+}
+
+.powerup-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    max-width: 900px;
+    gap: 12px;
+}
+
+.powerup-card {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 2px solid #00ffcc;
+    padding: 18px;
+    width: 260px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.powerup-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.powerup-card:hover {
+    background: linear-gradient(145deg, #222244, #1a2a4e);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.powerup-card:hover::before {
+    opacity: 1;
+}
+
+.powerup-type {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 8px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.type-buff {
+    background: linear-gradient(135deg, #00aa00, #00cc44);
+    color: white;
+}
+
+.type-risk {
+    background: linear-gradient(135deg, #ff8800, #ffaa00);
+    color: black;
+}
+
+.type-troll {
+    background: linear-gradient(135deg, #ff0055, #ff3377);
+    color: white;
+}
+
+.powerup-title {
+    color: #ffff00;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.powerup-desc {
+    color: #ccc;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.powerup-stack {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    color: #555;
+    font-size: 8px;
+}

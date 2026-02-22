@@ -1,0 +1,32 @@
+.start-screen {
+    display: flex !important;
+}
+
+.start-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #22d3ee;
+    margin-bottom: 24px;
+    text-align: center;
+    line-height: 1.5;
+    user-select: none;
+}
+
+.start-subtitle {
+    font-size: 0.75rem;
+    color: #ec4899;
+}
+
+.start-desc {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 32px;
+    text-align: center;
+    max-width: 400px;
+    line-height: 2;
+    user-select: none;
+}
+
+.troll-btn-wrapper {
+    transition: transform 0.15s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    display: inline-block;
+}

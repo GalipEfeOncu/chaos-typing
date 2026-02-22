@@ -1,0 +1,25 @@
+.gameover-screen {
+    display: flex !important;
+}
+
+.gameover-title {
+    font-size: 2.5rem;
+    color: #ef4444;
+    margin-bottom: 16px;
+}
+
+.gameover-subtitle {
+    color: #d1d5db;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+}
+
+.gameover-score {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.gameover-score span {
+    color: #facc15;
+}

@@ -1,0 +1,639 @@
+.distraction-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+    overflow: hidden;
+}
+
+/* ===== ERROR POPUPS ===== */
+.fake-popup {
+    position: absolute;
+    background: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    color: black;
+    padding: 8px 12px;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+    animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===== WHATSAPP NOTIFICATION ===== */
+.whatsapp-notification {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 10px 15px;
+    width: 90%;
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    animation: dropDown 4s ease-in-out forwards;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+@keyframes dropDown {
+    0% {
+        top: -100px;
+    }
+
+    10% {
+        top: 20px;
+    }
+
+    90% {
+        top: 20px;
+    }
+
+    100% {
+        top: -100px;
+    }
+}
+
+.wa-icon {
+    width: 35px;
+    height: 35px;
+    background: #25D366;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.wa-content {
+    flex-grow: 1;
+    color: #000;
+    text-shadow: none;
+}
+
+.wa-app-name {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.wa-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #000;
+}
+
+.wa-time {
+    font-weight: normal;
+    color: #888;
+}
+
+.wa-message {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ===== COOKIE CONSENT BANNER ===== */
+.cookie-banner {
+    position: absolute;
+    bottom: -300px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-top: 3px solid #ff6600;
+    color: #ccc;
+    padding: 20px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    z-index: 110;
+    animation: cookieSlideUp 5s ease-in-out forwards;
+    pointer-events: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.cookie-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.cookie-text {
+    flex: 1;
+    min-width: 200px;
+    color: #aaa;
+}
+
+.cookie-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+.cookie-accept {
+    background: #ff6600;
+    color: white;
+}
+
+.cookie-manage {
+    background: transparent;
+    border: 1px solid #555 !important;
+    color: #888;
+    font-size: 7px;
+}
+
+@keyframes cookieSlideUp {
+    0% {
+        bottom: -300px;
+    }
+
+    10% {
+        bottom: 0;
+    }
+
+    85% {
+        bottom: 0;
+    }
+
+    100% {
+        bottom: -300px;
+    }
+}
+
+/* ===== CLIPPY ===== */
+.clippy-container {
+    position: absolute;
+    bottom: 60px;
+    right: -300px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 105;
+    animation: clippySlideIn 6s ease-in-out forwards;
+    pointer-events: auto;
+}
+
+.clippy-char {
+    font-size: 60px;
+    animation: clippyBounce 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes clippyBounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+.clippy-bubble {
+    background: #fffde0;
+    color: #333;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+    font-size: 13px;
+    max-width: 240px;
+    line-height: 1.4;
+    position: relative;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
+    white-space: pre-line;
+}
+
+.clippy-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: -10px;
+    border: 6px solid transparent;
+    border-right-color: #fffde0;
+}
+
+@keyframes clippySlideIn {
+    0% {
+        right: -300px;
+    }
+
+    10% {
+        right: 20px;
+    }
+
+    85% {
+        right: 20px;
+    }
+
+    100% {
+        right: -300px;
+    }
+}
+
+/* ===== TROLL CHARACTER ===== */
+.troll-character {
+    position: absolute;
+    top: 30%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 108;
+    pointer-events: auto;
+}
+
+.troll-character.from-left {
+    left: -400px;
+    animation: trollFromLeft 5s ease-in-out forwards;
+}
+
+.troll-character.from-right {
+    right: -400px;
+    flex-direction: row-reverse;
+    animation: trollFromRight 5s ease-in-out forwards;
+}
+
+.troll-face {
+    font-size: 70px;
+    animation: trollWiggle 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes trollWiggle {
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+.troll-bubble {
+    background: rgba(255, 0, 85, 0.9);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    max-width: 280px;
+    line-height: 1.8;
+    box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
+    text-shadow: 1px 1px 0 #000;
+}
+
+@keyframes trollFromLeft {
+    0% {
+        left: -400px;
+    }
+
+    12% {
+        left: 10px;
+    }
+
+    82% {
+        left: 10px;
+    }
+
+    100% {
+        left: -400px;
+    }
+}
+
+@keyframes trollFromRight {
+    0% {
+        right: -400px;
+    }
+
+    12% {
+        right: 10px;
+    }
+
+    82% {
+        right: 10px;
+    }
+
+    100% {
+        right: -400px;
+    }
+}
+
+/* ===== FAKE CURSORS ===== */
+.fake-cursor {
+    position: absolute;
+    z-index: 120;
+    animation: cursorMove 2s ease-in-out infinite alternate;
+    left: var(--start-x);
+    top: var(--start-y);
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes cursorMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(calc(100px - var(--start-x) * 0.5), 50px);
+    }
+
+    50% {
+        transform: translate(-80px, calc(30px + var(--start-y) * 0.3));
+    }
+
+    75% {
+        transform: translate(120px, -40px);
+    }
+
+    100% {
+        transform: translate(calc(-60px + var(--start-x) * 0.3), 70px);
+    }
+}
+
+/* ===== JUMPSCARE ===== */
+.jumpscare-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    animation: jumpscareFlash 0.6s ease-out forwards;
+    pointer-events: auto;
+}
+
+.jumpscare-emoji {
+    font-size: min(50vw, 300px);
+    animation: jumpscareShake 0.1s linear infinite;
+    filter: saturate(2) contrast(1.5);
+}
+
+@keyframes jumpscareFlash {
+    0% {
+        opacity: 0;
+        background: white;
+    }
+
+    5% {
+        opacity: 1;
+        background: rgba(255, 0, 0, 0.4);
+    }
+
+    30% {
+        background: rgba(0, 0, 0, 0.85);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes jumpscareShake {
+    0% {
+        transform: translate(-3px, -3px) scale(1.05);
+    }
+
+    25% {
+        transform: translate(3px, -2px) scale(0.98);
+    }
+
+    50% {
+        transform: translate(-2px, 3px) scale(1.02);
+    }
+
+    75% {
+        transform: translate(3px, 2px) scale(0.97);
+    }
+
+    100% {
+        transform: translate(-3px, -3px) scale(1.05);
+    }
+}
+
+/* ===== SCREEN FLASH ===== */
+.screen-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.8;
+    z-index: 90;
+    animation: flashOut 0.1s forwards;
+}
+
+@keyframes flashOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* ===== WINDOWS UPDATE SCREEN ===== */
+.windows-update-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0078d7;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+    animation: fadeIn 0.3s;
+}
+
+.wu-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 30px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.wu-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.wu-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+}
+
+.wu-progress {
+    font-size: 36px;
+    font-weight: bold;
+    animation: wuCount 5s linear forwards;
+}
+
+@keyframes wuCount {
+    0% {
+        content: '0%';
+    }
+}
+
+.wu-warning {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 20px;
+}
+
+/* ===== CAPTCHA ===== */
+.captcha-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 160;
+    pointer-events: auto;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.captcha-box {
+    background: #f9f9f9;
+    border: 2px solid #d3d3d3;
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    color: #333;
+    min-width: 300px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.captcha-checkbox {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.captcha-checkbox.checked {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+
+.captcha-checkbox.checking {
+    animation: captchaSpin 0.8s linear infinite;
+    border-color: #2196f3;
+    border-top-color: transparent;
+    border-radius: 50%;
+}
+
+@keyframes captchaSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.captcha-label {
+    font-size: 14px;
+    color: #555;
+    flex-grow: 1;
+    text-shadow: none;
+}
+
+.captcha-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.captcha-logo-icon {
+    font-size: 30px;
+}
+
+.captcha-logo-text {
+    font-size: 7px;
+    color: #999;
+    letter-spacing: 0.5px;
+}

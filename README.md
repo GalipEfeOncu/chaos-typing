@@ -1,55 +1,16 @@
-# Chaos Typing ⚔️
+# React + Vite
 
-**Türkçe karakter destekli, kaotik ve zorlayıcı bir typing oyunu**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Canlı oynayın → https://galipefeoncu.github.io/chaos-typing/
+Currently, two official plugins are available:
 
-### Önemli Uyarı
-**Oyun, güncel internet kültürü, mizah ve sosyal medya jargonunu yansıtan kelimeler içerir.**  
-Bu kelimeler arasında argo, politik figürler, sert mizah ve bazı kullanıcıları rahatsız edebilecek ifadeler bulunabilir.  
-İçerik tamamen hiciv ve eğlence amaçlıdır; herhangi bir kişi, kurum veya topluluğu hedef almamaktadır.  
-Rahatsız olabileceğini düşünen oyuncuların oynaması önerilmez.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Proje Amacı
-Giderek zorlaşan ve dikkat dağıtıcı unsurlarla dolu bir yazma pratiği/tower-defense tarzı oyun geliştirmek.  
-Oyun, hızlı ve doğru yazma becerisini geliştirirken aynı zamanda odaklanma, stres yönetimi ve çoklu uyaran altında performans konularında eğlenceli bir deneyim sunar.
+## React Compiler
 
-### Özellikler
-- 160+ kelimelik dinamik Türkçe ve güncel kelime havuzu  
-- Türkçe büyük/küçük I-İ harf toleransı (TR klavye dostu)  
-- Seviye ilerledikçe artan hız ve karmaşıklık  
-- Dikkat dağıtıcı görsel/işitsel efektler (sahte bildirimler, ekran titreşimi, renk değişimi vb.)  
-- Güçlendirme/kısıtlama kartları sistemi (zaman durdurma, ekran bulanıklığı, ters çevirme, sansür vb.)  
-- Gerçek zamanlı puan, can ve seviye takibi  
-- Responsive tasarım (mobil + masaüstü)  
-- Hiçbir harici kütüphane kullanılmadı → sadece vanilla HTML + CSS + JavaScript
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Nasıl Oynanır?
-1. Başlat tuşuna basın (veya Enter)  
-2. Ekrandan aşağı inen kelimeleri doğru ve hızlıca yazın  
-3. Kelime tamamlandığında yok olur ve puan kazanırsınız  
-4. Kelime yere değerse 1 can kaybedersiniz  
-5. 3 can bitince oyun biter
+## Expanding the ESLint configuration
 
-### Oyun İçi Görseller
-<img width="1876" height="953" alt="image" src="https://github.com/user-attachments/assets/b8f375b0-50aa-4bfc-9851-8659f20f0b2d" />
-<img width="1873" height="954" alt="image" src="https://github.com/user-attachments/assets/56ed5bae-64b7-4b87-9c13-3d722c2a92dc" />
-
-### Teknik Detaylar
-- Canvas API ile render  
-- Web Audio API ile ses efektleri  
-- Tamamen tek dosya (index.html) → bağımlılık yok  
-- GitHub Pages ile ücretsiz hosting
-
-### Geliştirme Süreci
-Bu projede büyük oranda **Google Gemini 3 yapay zekâsı kullanılmıştır**.  
-Oyun fikri, mekanikler, kontroller ve final düzenlemeler insan eliyle yapılmıştır.
-
-### Lisans
-MIT License – özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz.
-
-### İletişim & Katkı
-- Issue açarak hata bildirebilir  
-- Pull Request ile yeni kelime, efekt veya özellik önerebilirsiniz  
-- Yıldız bırakmanız bizi çok mutlu eder
-- galipefe75@gmail.com üzerinden bana ulaşabilirsiniz.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
