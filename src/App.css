@@ -119,7 +119,7 @@ body {
   align-items: center;
   z-index: 20;
   text-align: center;
-  backdrop-filter: blur(6px);
+  /* Removed backdrop-filter: blur(6px) for massive performance boost */
   animation: fadeIn 0.3s ease-out;
 }
 

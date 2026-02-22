@@ -6,7 +6,7 @@ const GameCanvas = forwardRef(function GameCanvas(
     ref
 ) {
     const canvasRef = useRef(null);
-    const fontLoaded = useRef(false);
+    const nightGradRef = useRef(null);
 
     // Expose canvas element for sizing from parent
     useImperativeHandle(ref, () => ({
@@ -20,6 +20,7 @@ const GameCanvas = forwardRef(function GameCanvas(
         function resize() {
             canvas.width = window.innerWidth > 1100 ? 1100 : window.innerWidth - 20;
             canvas.height = window.innerHeight > 700 ? 700 : window.innerHeight - 20;
+            nightGradRef.current = null; // force clear cached gradient
         }
         resize();
         window.addEventListener('resize', resize);
@@ -77,14 +78,17 @@ const GameCanvas = forwardRef(function GameCanvas(
             // Night mode — dark vignette overlay (dim but visible)
             if (isNightMode.current) {
                 // Dark radial gradient from center (lighter) to edges (darker)
-                const cx = canvas.width / 2;
-                const cy = canvas.height / 2;
-                const maxR = Math.sqrt(cx * cx + cy * cy);
-                const gradient = ctx.createRadialGradient(cx, cy, maxR * 0.15, cx, cy, maxR);
-                gradient.addColorStop(0, 'rgba(0, 0, 0, 0.45)');
-                gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.7)');
-                gradient.addColorStop(1, 'rgba(0, 0, 0, 0.88)');
-                ctx.fillStyle = gradient;
+                if (!nightGradRef.current) {
+                    const cx = canvas.width / 2;
+                    const cy = canvas.height / 2;
+                    const maxR = Math.sqrt(cx * cx + cy * cy);
+                    const gradient = ctx.createRadialGradient(cx, cy, maxR * 0.15, cx, cy, maxR);
+                    gradient.addColorStop(0, 'rgba(0, 0, 0, 0.45)');
+                    gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.7)');
+                    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.88)');
+                    nightGradRef.current = gradient;
+                }
+                ctx.fillStyle = nightGradRef.current;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 // Subtle glow around active target
@@ -150,7 +154,12 @@ function drawEnemy(ctx, canvas, enemy, isActive, isTinyText, isCensored) {
         ? "bold 10px 'Press Start 2P'"
         : "bold 16px 'Press Start 2P'";
 
-    const totalWidth = ctx.measureText(enemy.word).width;
+    // Cache measureText calls to save GPU/CPU cycles
+    if (!enemy._cachedTotalWidth || enemy._cachedIsTinyText !== isTinyText) {
+        enemy._cachedTotalWidth = ctx.measureText(enemy.word).width;
+        enemy._cachedIsTinyText = isTinyText;
+    }
+    const totalWidth = enemy._cachedTotalWidth;
 
     // Clamp drawX so word text doesn't overflow canvas edges
     const halfWord = totalWidth / 2 + 10;
@@ -172,15 +181,26 @@ function drawEnemy(ctx, canvas, enemy, isActive, isTinyText, isCensored) {
     }
 
     let cursorX = startX;
-
-    ctx.fillStyle = '#00ffcc';
-    ctx.shadowColor = '#00ffcc';
-    ctx.shadowBlur = 15;
     ctx.textAlign = 'left';
-    ctx.fillText(matchedStr, cursorX, wordY);
-    ctx.shadowBlur = 0;
 
-    cursorX += ctx.measureText(matchedStr).width;
+    if (matchedStr) {
+        ctx.fillStyle = '#00ffcc';
+
+        if (isActive) {
+            ctx.shadowColor = '#00ffcc';
+            ctx.shadowBlur = 10; // Expensive, so only for active enemy
+        }
+
+        ctx.fillText(matchedStr, cursorX, wordY);
+        ctx.shadowBlur = 0; // Reset
+
+        if (enemy._cachedMatchedIndex !== enemy.matchedIndex || enemy._cachedMatchedIsTiny !== isTinyText) {
+            enemy._cachedMatchedWidth = ctx.measureText(matchedStr).width;
+            enemy._cachedMatchedIndex = enemy.matchedIndex;
+            enemy._cachedMatchedIsTiny = isTinyText;
+        }
+        cursorX += enemy._cachedMatchedWidth;
+    }
 
     // Scrambled words shown in yellow as visual warning
     const normalColor = enemy.isScrambled ? '#ffdd44' : '#ffffff';

@@ -1,6 +1,6 @@
 .levelup-screen {
     display: flex !important;
-    background: rgba(20, 0, 20, 0.95) !important;
+    background: rgba(10, 0, 10, 0.95) !important;
 }
 
 .levelup-title {
@@ -26,11 +26,13 @@
 
 .powerup-card {
     background: linear-gradient(145deg, #1a1a2e, #16213e);
-    border: 2px solid #00ffcc;
+    border: 2px solid #2a2a4e;
     padding: 18px;
     width: 260px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Optimized transition and removed heavy properties for GPU performance */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
+    transform: translateZ(0);
     height: 160px;
     display: flex;
     flex-direction: column;
@@ -46,17 +48,23 @@
     inset: 0;
     background: linear-gradient(135deg, rgba(0, 255, 204, 0.05), transparent);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s ease;
 }
 
 .powerup-card:hover {
-    background: linear-gradient(145deg, #222244, #1a2a4e);
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3), 0 8px 32px rgba(0, 0, 0, 0.5);
+    transform: translateY(-4px) translateZ(0);
+    /* Simplified shadow to prevent lag spikes */
+    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.15);
+    border-color: #00ffcc;
+}
+
+.powerup-card:active {
+    transform: translateY(2px) translateZ(0);
+    box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);
 }
 
 .powerup-card:hover::before {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .powerup-type {

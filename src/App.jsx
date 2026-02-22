@@ -637,13 +637,7 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className={`app-body ${discoFast ? 'disco-fast' : 'disco-bg'}`}
-      style={{
-        transform: screenTiltAngle ? `rotate(${screenTiltAngle}deg)` : 'none',
-        transition: 'transform 0.8s ease',
-      }}
-    >
+    <div className={`app-body ${discoFast ? 'disco-fast' : 'disco-bg'}`}>
       <Scanlines />
       <BSoDScreen visible={bsodVisible} />
 
@@ -678,7 +672,14 @@ export default function App() {
         </div>
       )}
 
-      <div className="game-container">
+      <div
+        className="game-container"
+        style={{
+          transform: screenTiltAngle ? `rotate(${screenTiltAngle}deg) translateZ(0)` : 'translateZ(0)',
+          transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          willChange: screenTiltAngle !== 0 ? 'transform' : 'auto',
+        }}
+      >
         <HUD
           score={hudData.score}
           lives={hudData.lives}

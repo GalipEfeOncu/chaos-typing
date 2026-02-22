@@ -1,7 +1,7 @@
 import React from 'react';
 import './LevelUpScreen.css';
 
-export default function LevelUpScreen({ choices, onSelect }) {
+export default React.memo(function LevelUpScreen({ choices, onSelect }) {
     return (
         <div className="modal-screen levelup-screen">
             <h1 className="levelup-title glitch">LEVEL ATLADIN!</h1>
@@ -35,4 +35,4 @@ export default function LevelUpScreen({ choices, onSelect }) {
             </div>
         </div>
     );
-}
+});

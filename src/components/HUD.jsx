@@ -1,7 +1,7 @@
 import React from 'react';
 import './HUD.css';
 
-export default function HUD({ score, lives, level, nextLevelScore, activeBuffs }) {
+export default React.memo(function HUD({ score, lives, level, nextLevelScore, activeBuffs }) {
     return (
         <div className="hud">
             <div className="hud-row hud-score">
@@ -23,4 +23,4 @@ export default function HUD({ score, lives, level, nextLevelScore, activeBuffs }
             )}
         </div>
     );
-}
+});
