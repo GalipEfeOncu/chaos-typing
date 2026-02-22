@@ -56,3 +56,25 @@
     border-top: 1px solid rgba(0, 255, 204, 0.1);
     padding-top: 8px;
 }
+
+.hud-menu-btn {
+    pointer-events: auto;
+    /* Re-enable pointer events since HUD container is none */
+    margin-top: 15px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #9ca3af;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.hud-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
+}

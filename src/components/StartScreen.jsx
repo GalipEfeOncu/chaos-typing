@@ -17,7 +17,7 @@ const DESCS = [
     "Oyun çok kolay.\nBunu kaybeden de ne bileyim.\nKesin hata yoktur."
 ];
 
-export default function StartScreen({ onStart }) {
+export default function StartScreen({ onStart, onShowScoreboard }) {
     const [title, setTitle] = useState(TITLES[0]);
     const [desc, setDesc] = useState(DESCS[0]);
     const [btnPos, setBtnPos] = useState({ x: 0, y: 0 });
@@ -30,11 +30,12 @@ export default function StartScreen({ onStart }) {
     }, []);
 
     const handleMouseEnter = () => {
-        // İlk 1 veya 2 hover'da buton ışınlansın
-        if (teleportCount < 2 && Math.random() > 0.2) {
-            setTeleportCount(prev => prev + 1);
-            const x = (Math.random() - 0.5) * 300; // -150 to 150 px
-            const y = (Math.random() - 0.5) * 200 + 50; // Biraz daha farklı yerlere
+        // Her over yapışta %20 şans ile buton kaçsın
+        if (Math.random() > 0.8) {
+            const x = (Math.random() - 0.5) * 300; // -150 to 150 px arası yatay
+            // Scoreboard butonunun üstüne düşmemesi için Y eksenini sadece yukarıya (negatif) 
+            // veya çok az aşağıya girmesine izin verecek şekide sınırlandırdık
+            const y = (Math.random() * -150); // sadece yukarı (0 ile -150 px arası) kaçar
             setBtnPos({ x, y });
         }
     };
@@ -44,7 +45,7 @@ export default function StartScreen({ onStart }) {
             <h1 className="start-title glitch">
                 {title}
                 <br />
-                <span className="start-subtitle">Ultimate Turkish Typing Chaos V1.0</span>
+                <span className="start-subtitle">Ultimate Turkish Typing Chaos V1.2</span>
             </h1>
             <p className="start-desc">
                 {desc.split('\n').map((line, i) => (
@@ -54,14 +55,22 @@ export default function StartScreen({ onStart }) {
                     </React.Fragment>
                 ))}
             </p>
-            <div
-                className="troll-btn-wrapper"
-                style={{ transform: `translate(${btnPos.x}px, ${btnPos.y}px)` }}
-                onMouseEnter={handleMouseEnter}
-            >
-                <button className="btn" onClick={onStart}>
-                    BAŞLAT (ENTER)
-                </button>
+            <div className="start-actions">
+                <div
+                    className="troll-btn-wrapper"
+                    style={{ transform: `translate(${btnPos.x}px, ${btnPos.y}px)` }}
+                    onMouseEnter={handleMouseEnter}
+                >
+                    <button className="btn" onClick={onStart}>
+                        BAŞLAT (ENTER)
+                    </button>
+                </div>
+
+                <div className="scoreboard-btn-wrapper">
+                    <button className="btn btn-leaderboard" onClick={onShowScoreboard}>
+                        🏆 SKOR TABLOSU
+                    </button>
+                </div>
             </div>
         </div>
     );

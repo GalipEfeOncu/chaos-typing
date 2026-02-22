@@ -1,7 +1,7 @@
 import React from 'react';
 import './HUD.css';
 
-export default React.memo(function HUD({ score, lives, level, nextLevelScore, activeBuffs }) {
+export default React.memo(function HUD({ score, lives, level, nextLevelScore, activeBuffs, onMenuClick }) {
     return (
         <div className="hud">
             <div className="hud-row hud-score">
@@ -20,6 +20,11 @@ export default React.memo(function HUD({ score, lives, level, nextLevelScore, ac
                 <div className="hud-buffs">
                     MODLAR: {activeBuffs.join(', ')}
                 </div>
+            )}
+            {onMenuClick && (
+                <button className="hud-menu-btn" onClick={onMenuClick}>
+                    MENÜYE DÖN
+                </button>
             )}
         </div>
     );

@@ -7,6 +7,8 @@ import HUD from './components/HUD';
 import BSoDScreen from './components/BSoDScreen';
 import DistractionLayer from './components/DistractionLayer';
 import Scanlines from './components/Scanlines';
+import Scoreboard from './components/Scoreboard';
+import MenuConfirmScreen from './components/MenuConfirmScreen';
 import { useAudio } from './hooks/useAudio';
 import { words } from './data/words';
 import { enemyEmojis } from './data/emojis';
@@ -686,6 +688,10 @@ export default function App() {
           level={hudData.level}
           nextLevelScore={hudData.nextLevelScore}
           activeBuffs={hudData.activeBuffs}
+          onMenuClick={screen === 'PLAYING' ? () => {
+            gameStateRef.current = 'PAUSE';
+            setScreen('CONFIRM_QUIT');
+          } : undefined}
         />
 
         <DistractionLayer
@@ -714,16 +720,31 @@ export default function App() {
           />
         </div>
 
-        {screen === 'MENU' && <StartScreen onStart={startGame} />}
+        {screen === 'MENU' && <StartScreen onStart={startGame} onShowScoreboard={() => setScreen('SCOREBOARD')} />}
+        {screen === 'SCOREBOARD' && <Scoreboard onClose={() => setScreen('MENU')} />}
         {screen === 'GAMEOVER' && (
-          <GameOverScreen score={hudData.score} onRestart={startGame} />
+          <GameOverScreen score={hudData.score} level={hudData.level} onRestart={startGame} />
         )}
         {screen === 'LEVELUP' && (
           <LevelUpScreen choices={levelUpChoices} onSelect={selectPowerup} />
         )}
+        {screen === 'CONFIRM_QUIT' && (
+          <MenuConfirmScreen
+            onConfirm={() => {
+              gameStateRef.current = 'MENU';
+              setScreen('MENU');
+              updateHUD();
+            }}
+            onCancel={() => {
+              gameStateRef.current = 'PLAYING';
+              setScreen('PLAYING');
+              lastTimeRef.current = performance.now(); // reset timer so enemies don't jump
+            }}
+          />
+        )}
       </div>
 
-      <div className="version-tag">CHAOS TYPING v1.0</div>
+      <div className="version-tag">CHAOS TYPING v1.2</div>
     </div>
   );
 }

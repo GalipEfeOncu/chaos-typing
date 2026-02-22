@@ -1,0 +1,58 @@
+.confirm-screen {
+    z-index: 60;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 0, 5, 0.95);
+    display: flex !important;
+}
+
+.confirm-title {
+    font-size: 3rem;
+    color: #ff0055;
+    margin-bottom: 24px;
+    text-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+    text-align: center;
+}
+
+.confirm-subtitle {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 40px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-coward {
+    background: linear-gradient(135deg, #475569, #334155);
+    border-bottom-color: #1e293b;
+    color: #94a3b8;
+    box-shadow: 0 4px 15px rgba(51, 65, 85, 0.3);
+}
+
+.btn-coward:hover {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    /* Kaçarken kan kırmızıya döner! */
+    color: white;
+    border-bottom-color: #7f1d1d;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+    transform: translateY(10px);
+    /* Kaçıyormuş hissi :) */
+}
+
+.btn-brave {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-bottom-color: #047857;
+    font-size: 16px;
+    padding: 16px 50px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-brave:hover {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    transform: scale(1.1);
+}

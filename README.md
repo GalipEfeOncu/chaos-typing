@@ -22,8 +22,11 @@ Klasik on parmak klavye oyunlarından farklı olarak bu oyun, hızlı ve doğru 
 
 ---
 
-### ✨ Yenilenen React Özellikleri (V 1.0)
-Legacy versiyondan tamamen modern bir yapı olan **React + Vite** ikilisine geçirildi ve donanım hızlandırmalı inanılmaz kaotik özellikler eklendi!
+### ✨ Yenilenen React Özellikleri (V 1.2 - Global Scoreboard Update)
+Legacy versiyondan tamamen modern bir yapı olan **React + Vite** ikilisine geçirildi! Son güncellemeyle GPU optimizasyonları yapıldı ve Küresel Liderlik Tablosu (Global Leaderboard) sisteme entegre edildi.
+
+- **🏆 Global Leaderboard (Yeni!)**: Firebase entegrasyonu sayesinde oyun bitiminde en iyi skorunuzu bulutta saklayın ve diğer "korkusuz oyuncularla" dünya çapında kapışın! (İsim korumalı)
+- **🛑 Troll Confirm Screen (Yeni!)**: Oyun devam ederken korkup "Menüye Dön" diyenlere özel yeni aşağılayıcı vazgeçme (Quit) onay mekaniği.
 
 - **160+ Dinamik ve Güncel Türkçe Kelime Havuzu** (Tamamen yerli internet kültürü)
 - **Kusursuz Türkçe Karakter Toleransı**: Büyük/küçük harf duyarlılığında Türkçeye özgü (I-İ mekanikleri) kusursuz işler.
